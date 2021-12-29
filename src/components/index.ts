@@ -4,3 +4,4 @@ export { default as Icon } from "./Icon";
 export { default as Filters } from "./Filters";
 export { default as Basket } from "./Basket";
 export { default as Products } from "./Products";
+export { default as Radio } from "./Radio";

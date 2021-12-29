@@ -7,8 +7,8 @@ function App() {
       <Header />
       <MainContainer>
         <Filters />
-        <Basket />
         <Products />
+        <Basket />
       </MainContainer>
     </>
   );

@@ -9,7 +9,7 @@ interface IconProps {
 const Icon: FC<IconProps> = ({ iconName, size = 20, color, ...props }) => {
   return (
     <IconWrapper
-      className={`icon icon-basket`}
+      className={`icon icon-${iconName}`}
       size={size}
       color={color}
       {...props}

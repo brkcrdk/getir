@@ -7,4 +7,5 @@ export default Basket;
 const BasketWrapper = styled.div`
   border: 1px solid blue;
   width: 100%;
+  max-width: 296px;
 `;

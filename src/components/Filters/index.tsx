@@ -12,6 +12,6 @@ const Filters = () => {
 export default Filters;
 
 const FiltersWrapper = styled.div`
-  border: 1px solid yellow;
   width: 100%;
+  max-width: 296px;
 `;

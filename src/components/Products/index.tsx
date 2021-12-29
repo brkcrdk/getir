@@ -7,4 +7,5 @@ export default Products;
 const ProductsWrapper = styled.div`
   border: 1px solid red;
   width: 100%;
+  margin: 0 16px;
 `;

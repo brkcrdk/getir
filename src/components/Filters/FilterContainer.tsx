@@ -8,7 +8,7 @@ interface FilterProps {
 
 const FilterContainer: FC<FilterProps> = ({ children, title, ...props }) => {
   return (
-    <FilterContainerWrapper>
+    <FilterContainerWrapper {...props}>
       <Title>{title}</Title>
       <FilterContent>{children}</FilterContent>
     </FilterContainerWrapper>
@@ -17,17 +17,23 @@ const FilterContainer: FC<FilterProps> = ({ children, title, ...props }) => {
 
 export default FilterContainer;
 
-const FilterContainerWrapper = styled.div``;
+const FilterContainerWrapper = styled.form`
+  width: 100%;
+`;
 
-const Title = styled.h4`
+const Title = styled.legend`
   font-weight: 600;
   font-size: 13px;
   line-height: 18px;
   margin-bottom: 12px;
 `;
-const FilterContent = styled.div`
+
+const FilterContent = styled.fieldset`
   background: #fff;
+  border: none;
   box-shadow: rgb(93 62 188 / 4%) 0px 6px 24px;
   border-radius: 2px;
   padding: 24px;
+  display: grid;
+  row-gap: 18px;
 `;
