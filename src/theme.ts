@@ -4,6 +4,7 @@ const theme: DefaultTheme = {
   colors: {
     main: "#1EA4CE",
     darkMain: "#147594",
+    chipBackground: "#F2F0FD",
     blackScale: {
       black: "#525252",
       black50: "#F4F4F4",

@@ -6,6 +6,7 @@ declare module "styled-components" {
     colors: {
       main: string;
       darkMain: string;
+      chipBackground: string;
       grayScale: {
         gray500: string;
         gray700: string;
