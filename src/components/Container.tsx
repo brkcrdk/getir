@@ -6,11 +6,11 @@ interface ContainerProps {
 }
 
 const Container: FC<ContainerProps> = ({ children, ...props }) => {
-  return <CustomContainer {...props}>{children}</CustomContainer>;
+  return <ContainerWrapper {...props}>{children}</ContainerWrapper>;
 };
 export default Container;
 
-const CustomContainer = styled.div`
+const ContainerWrapper = styled.div`
   max-width: 1232px;
   display: grid;
   margin: 0 auto;

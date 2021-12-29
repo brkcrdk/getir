@@ -8,7 +8,7 @@ interface IconProps {
 }
 const Icon: FC<IconProps> = ({ iconName, size = 20, color, ...props }) => {
   return (
-    <CustomIcon
+    <IconWrapper
       className={`icon icon-basket`}
       size={size}
       color={color}
@@ -22,7 +22,7 @@ interface StyleProps {
   size: number;
   color?: string;
 }
-const CustomIcon = styled.i<StyleProps>`
+const IconWrapper = styled.i<StyleProps>`
   font-size: ${(p) => `${p.size}px`};
   color: ${(p) => p.color};
 `;

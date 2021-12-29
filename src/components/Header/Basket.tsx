@@ -3,19 +3,20 @@ import { Icon } from "components";
 
 const Basket = () => {
   return (
-    <BasketContainer>
+    <BasketWrapper>
       <Icon iconName="basket" size={24} />
       <span>₺ 34</span>
-    </BasketContainer>
+    </BasketWrapper>
   );
 };
 
 export default Basket;
 
-const BasketContainer = styled.div`
+const BasketWrapper = styled.div`
   background: ${(p) => p.theme.colors.darkMain};
   color: #fff;
   display: flex;
+  align-items: center;
   height: 100%;
   padding: 0 26px;
   span {
