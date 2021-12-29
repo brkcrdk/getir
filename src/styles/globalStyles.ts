@@ -10,6 +10,9 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
   }
+  body{
+    background: #FAFAFA;
+  }
 	a {
 		text-decoration: none;
 		cursor: pointer;

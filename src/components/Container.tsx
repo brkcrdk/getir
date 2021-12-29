@@ -1,10 +1,11 @@
 import { FC } from "react";
 import styled from "styled-components";
 
-interface IContainer {
+interface ContainerProps {
   children: React.ReactNode;
 }
-const Container: FC<IContainer> = ({ children, ...props }) => {
+
+const Container: FC<ContainerProps> = ({ children, ...props }) => {
   return <CustomContainer {...props}>{children}</CustomContainer>;
 };
 export default Container;
