@@ -42,4 +42,8 @@ const Total = styled.button`
   align-self: flex-end;
   max-width: 90px;
   cursor: default;
+  color: ${(p) => p.theme.colors.main};
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
 `;

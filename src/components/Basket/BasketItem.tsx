@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Icon } from "components";
+import theme from "theme";
 const BasketItem = () => {
   return (
     <BasketItemWrapper>
@@ -7,9 +9,13 @@ const BasketItem = () => {
         <span className="product-price">₺14,99</span>
       </ItemInfo>
       <AmountControllers>
-        <button>-</button>
+        <button>
+          <Icon iconName="minus" size={14} color={theme.colors.main} />
+        </button>
         <span className="amount">1</span>
-        <button>+</button>
+        <button>
+          <Icon iconName="plus" size={14} color={theme.colors.main} />
+        </button>
       </AmountControllers>
     </BasketItemWrapper>
   );
@@ -50,5 +56,6 @@ const AmountControllers = styled.div`
     font-weight: 700;
     background: ${(p) => p.theme.colors.main};
     color: #fff;
+    margin: 0 10px;
   }
 `;
