@@ -8,7 +8,8 @@ const theme: DefaultTheme = {
       black: "#525252",
       black50: "#F4F4F4",
       black100: "#E0E0E0",
-      black500: "#A8A8A8",
+      black300: "#A8A8A8",
+      black500: "#6F6F6F",
       black600: "#525252",
     },
     grayScale: {

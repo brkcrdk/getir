@@ -20,7 +20,7 @@ const Checkbox: FC<CheckboxProps> = ({
   return (
     <CheckboxWrapper htmlFor={id} onChange={onChange}>
       <input type="checkbox" id={id} name={checkboxType} checked={checked} />
-      {label}
+      <span>{label}</span>
       {checked && <Icon iconName="check" size={16} color="#fff" />}
     </CheckboxWrapper>
   );
@@ -36,7 +36,6 @@ const CheckboxWrapper = styled.label`
     margin: 0;
     margin-right: 12px;
     box-shadow: ${(p) => p.theme.colors.boxShadows.checkbox};
-    margin-right: 12px;
     position: relative;
     width: 22px;
     height: 22px;
@@ -47,6 +46,10 @@ const CheckboxWrapper = styled.label`
     &:checked {
       background: ${(p) => p.theme.colors.main};
     }
+  }
+  span {
+    white-space: pre-line;
+    width: 85%;
   }
   .icon-check {
     position: absolute;

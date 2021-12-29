@@ -1,36 +1,31 @@
+import { useEffect, useState } from "react";
 import { Checkbox } from "components";
+import { fetchBrands } from "api";
 import FilterContainer from "./FilterContainer";
+
 const Brands = () => {
-  const brandsTest = [
-    {
-      label: "All",
-      id: "all",
-    },
-    {
-      label: "Deneme",
-      id: "deneme",
-    },
-  ];
+  const [brands, setBrands] = useState([]);
+
+  useEffect(() => {
+    const getBrands = async () => {
+      const brandData = await fetchBrands();
+      setBrands(brandData);
+    };
+    getBrands();
+  }, []);
 
   return (
-    <FilterContainer title="Brands">
-      {brandsTest.map((brand) => (
+    <FilterContainer title="Brands" searchable>
+      {brands.map((brand) => (
         <Checkbox
-          key={brand.id}
-          label={brand.label}
-          id={brand.id}
+          key={brand}
+          label={brand}
+          id={brand}
           checkboxType="brands"
           onChange={() => console.log(brand)}
-          checked={brand.id === "all"}
+          checked={brand === "all"}
         />
       ))}
-      {/* <Checkbox
-        label="All"
-        id="all"
-        checkboxType="brands"
-        onChange={() => console.log("x")}
-        checked
-      /> */}
     </FilterContainer>
   );
 };
