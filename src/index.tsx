@@ -5,6 +5,7 @@ import GlobalStyle from "styles/globalStyles";
 import theme from "theme";
 import App from "./App";
 import "styles/libraryStyles.css";
+import { Provider } from "react-redux";
 
 ReactDOM.render(
   <React.StrictMode>
