@@ -18,5 +18,6 @@ export default App;
 
 const MainContainer = styled(Container)`
   margin-top: 38px;
+  margin-bottom: 100px;
   display: flex;
 `;

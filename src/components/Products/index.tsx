@@ -1,11 +1,15 @@
 import styled from "styled-components";
+import { Pagination } from "components";
 import ProductTypes from "./ProductTypes";
+import ProductList from "./ProductList";
 
 const Products = () => {
   return (
     <ProductsWrapper>
       <h3>Products</h3>
       <ProductTypes />
+      <ProductList />
+      <Pagination activePage={2} pageCount={12} />
     </ProductsWrapper>
   );
 };
