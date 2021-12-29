@@ -31,7 +31,7 @@ const Title = styled.legend`
 const FilterContent = styled.fieldset`
   background: #fff;
   border: none;
-  box-shadow: rgb(93 62 188 / 4%) 0px 6px 24px;
+  box-shadow: ${(p) => p.theme.colors.boxShadows.filterContainer}
   border-radius: 2px;
   padding: 24px;
   display: grid;

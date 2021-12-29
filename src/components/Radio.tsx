@@ -47,7 +47,6 @@ const RadioWrapper = styled.label`
     color: currentColor;
     border: 0.15em solid ${(p) => p.theme.colors.main};
     border-radius: 50%;
-    /* transform: translateY(-0.075em); */
   }
   .icon-check {
     position: absolute;

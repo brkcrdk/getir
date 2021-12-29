@@ -6,6 +6,21 @@ declare module "styled-components" {
     colors: {
       main: string;
       darkMain: string;
+      grayScale: {
+        gray500: string;
+        gray700: string;
+      };
+      blackScale: {
+        black: string;
+        black50: string;
+        black100: string;
+        black500: string;
+        black600: string;
+      };
+      boxShadows: {
+        checkbox: string;
+        filterContainer: string;
+      };
     };
   }
 }
