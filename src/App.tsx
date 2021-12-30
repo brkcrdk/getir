@@ -1,5 +1,5 @@
-import { Header, Container, Filters, Basket, Products } from "components";
 import styled from "styled-components";
+import { Header, Container, Filters, Basket, Products } from "components";
 
 function App() {
   return (
