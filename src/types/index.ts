@@ -19,3 +19,10 @@ export interface ResultType {
   totalCount: number;
   totalPages: number;
 }
+
+export const actionTypes = {
+  productStore: {
+    FETCH_PRODUCTS_REQUESTED: "FETCH_PRODUCTS_REQUESTED",
+    UPDATE_PRODUCTS_REQUESTED: "UPDATE_PRODUCTS_REQUESTED",
+  },
+};
