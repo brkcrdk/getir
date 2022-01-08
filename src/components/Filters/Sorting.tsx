@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Radio } from "components";
 import FilterContainer from "./FilterContainer";
 const Sorting = () => {
-  const [selected, setSelected] = useState("mug");
+  const [selected, setSelected] = useState("price_asc");
 
   const handleChange = (type: string) => {
     return setSelected(type);
@@ -34,7 +34,7 @@ const Sorting = () => {
           key={type.id}
           label={type.label}
           id={type.id}
-          // onChange={() => handleChange(type.id)}
+          onChange={() => handleChange(type.id)}
           checked={selected === type.id}
           radioType="sortTypes"
         />

@@ -23,7 +23,7 @@ const Brands = () => {
           label={brand}
           id={brand}
           checkboxType="brands"
-          // onChange={() => console.log(brand)}
+          onChange={() => console.log(brand)}
           checked={brand === "All"}
         />
       ))}
