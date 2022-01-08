@@ -2,7 +2,7 @@ import { ProductType } from "types";
 
 const initialState = {
   products: [],
-  loading: false,
+  loading: true,
   filters: {
     _limit: 16,
     _page: 1,
