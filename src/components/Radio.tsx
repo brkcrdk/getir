@@ -19,8 +19,8 @@ const Radio: FC<RadioProps> = ({
   onChange,
 }) => {
   return (
-    <RadioWrapper htmlFor={id} onChange={onChange}>
-      <input type="radio" id={id} name={radioType} checked={checked} />
+    <RadioWrapper htmlFor={id}>
+      <input type="radio" id={id} name={radioType} onChange={onChange} />
       {label}
       {checked && <Icon iconName="check" size={16} color={theme.colors.main} />}
     </RadioWrapper>

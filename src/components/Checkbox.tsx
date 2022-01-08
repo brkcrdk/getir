@@ -18,8 +18,14 @@ const Checkbox: FC<CheckboxProps> = ({
   onChange,
 }) => {
   return (
-    <CheckboxWrapper htmlFor={id} onChange={onChange}>
-      <input type="checkbox" id={id} name={checkboxType} checked={checked} />
+    <CheckboxWrapper htmlFor={id}>
+      <input
+        type="checkbox"
+        id={id}
+        name={checkboxType}
+        checked={checked}
+        onChange={onChange}
+      />
       <span>{label}</span>
       {checked && <Icon iconName="check" size={16} color="#fff" />}
     </CheckboxWrapper>
@@ -32,6 +38,8 @@ const CheckboxWrapper = styled.label`
   display: flex;
   align-items: center;
   position: relative;
+  cursor: pointer;
+  width: 100%;
   input {
     margin: 0;
     margin-right: 12px;
