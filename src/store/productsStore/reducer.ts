@@ -1,3 +1,5 @@
+import { ProductType } from "types";
+
 const initialState = {
   products: [],
   loading: false,
@@ -7,21 +9,10 @@ const initialState = {
   },
 };
 
-interface Product {
-  tags: string[];
-  price: number;
-  name: string;
-  description: string;
-  slug: string;
-  added: number;
-  manufacturer: string;
-  itemType: string;
-}
-
 interface ActionType {
   type: string;
   payload: {
-    products: Product[];
+    products: ProductType[];
     loading: boolean;
     filters: {
       _limit: number;

@@ -1,26 +1,5 @@
 import { buildParams } from "utils";
-
-interface FilterTypes {
-  _page: number;
-  _limit: number;
-}
-
-interface Product {
-  tags: string[];
-  price: number;
-  name: string;
-  description: string;
-  slug: string;
-  added: number;
-  manufacturer: string;
-  itemType: string;
-}
-
-interface ResultType {
-  products: Product[];
-  totalCount: number;
-  totalPages: number;
-}
+import { FilterTypes, ResultType } from "types";
 
 const fetchProducts = async (filters: FilterTypes): Promise<ResultType> => {
   const customFilters = buildParams(filters);

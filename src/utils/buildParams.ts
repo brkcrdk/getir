@@ -1,7 +1,5 @@
-interface FilterTypes {
-  _page: number;
-  _limit: number;
-}
+import { FilterTypes } from "types";
+
 const buildParams = (data: FilterTypes): string => {
   const params = new URLSearchParams();
 

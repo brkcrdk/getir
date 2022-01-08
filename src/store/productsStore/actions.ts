@@ -1,27 +1,6 @@
 import { put, delay } from "redux-saga/effects";
 import { fetchProducts } from "api";
-
-interface Product {
-  tags: string[];
-  price: number;
-  name: string;
-  description: string;
-  slug: string;
-  added: number;
-  manufacturer: string;
-  itemType: string;
-}
-
-interface ResultType {
-  products: Product[];
-  totalCount: number;
-  totalPages: number;
-}
-
-interface FilterTypes {
-  _page: number;
-  _limit: number;
-}
+import { FilterTypes, ResultType } from "types";
 
 interface ParamTypes {
   type: string;
