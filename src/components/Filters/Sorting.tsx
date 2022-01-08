@@ -34,7 +34,7 @@ const Sorting = () => {
           key={type.id}
           label={type.label}
           id={type.id}
-          onChange={() => handleChange(type.id)}
+          // onChange={() => handleChange(type.id)}
           checked={selected === type.id}
           radioType="sortTypes"
         />

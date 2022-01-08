@@ -7,7 +7,7 @@ interface CheckboxProps {
   label: string;
   id: string;
   checkboxType: string;
-  onChange: () => void;
+  onChange?: () => void;
 }
 
 const Checkbox: FC<CheckboxProps> = ({

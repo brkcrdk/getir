@@ -8,7 +8,7 @@ interface RadioProps {
   label: string;
   id: string;
   radioType: string;
-  onChange: () => void;
+  onChange?: () => void;
 }
 
 const Radio: FC<RadioProps> = ({
