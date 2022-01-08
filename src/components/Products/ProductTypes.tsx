@@ -17,7 +17,7 @@ const ProductTypes = () => {
   return (
     <ProductTypesWrapper>
       {types.map((type) => (
-        <Badge label={type} />
+        <Badge label={type} isActive={type === "mug"} />
       ))}
     </ProductTypesWrapper>
   );

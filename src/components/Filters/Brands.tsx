@@ -4,11 +4,12 @@ import { fetchBrands } from "api";
 import FilterContainer from "./FilterContainer";
 
 const Brands = () => {
-  const [brands, setBrands] = useState([]);
+  const [brands, setBrands] = useState<string[]>([]);
 
   useEffect(() => {
     const getBrands = async () => {
-      const brandData = await fetchBrands();
+      const brandResponse = await fetchBrands();
+      const brandData = ["All"].concat(brandResponse);
       setBrands(brandData);
     };
     getBrands();
@@ -23,7 +24,7 @@ const Brands = () => {
           id={brand}
           checkboxType="brands"
           onChange={() => console.log(brand)}
-          checked={brand === "all"}
+          checked={brand === "All"}
         />
       ))}
     </FilterContainer>
