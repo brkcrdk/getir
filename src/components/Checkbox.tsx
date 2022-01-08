@@ -51,6 +51,7 @@ const CheckboxWrapper = styled.label`
     background: #fff;
     font: inherit;
     border-radius: 2px;
+    cursor: pointer;
     &:checked {
       background: ${(p) => p.theme.colors.main};
     }
