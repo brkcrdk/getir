@@ -1,8 +1,8 @@
 import { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { SidebarTypes } from "types";
 import { useOnClickOutside } from "usehooks-ts";
+import { SidebarTypes } from "types";
 
 interface StateProps {
   sidebarStore: SidebarTypes;
@@ -14,15 +14,20 @@ const Sidebar = () => {
   );
   const dispatch = useDispatch();
   const wrapperRef = useRef(null);
-  const closeSidebar = () => dispatch({ type: "CLOSE_SIDEBAR" });
+
+  const closeSidebar = () => {
+    if (isOpen) {
+      dispatch({ type: "CLOSE_SIDEBAR" });
+    }
+  };
 
   useOnClickOutside(wrapperRef, closeSidebar);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.classList.add("noScroll");
     } else {
-      document.body.style.overflow = "initial";
+      document.body.classList.remove("noScroll");
     }
   }, [isOpen]);
 

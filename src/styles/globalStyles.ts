@@ -31,6 +31,11 @@ const GlobalStyle = createGlobalStyle`
   input{
     border: none;
   }
+  .noScroll{
+    position: fixed; 
+    overflow-y: scroll;
+    width: 100%;
+  }
 `;
 
 export default GlobalStyle;
