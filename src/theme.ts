@@ -26,3 +26,12 @@ const theme: DefaultTheme = {
 };
 
 export default theme;
+
+export const device = {
+  widescreen: "(max-width: 1440px)",
+  desktop: "(max-width: 1280px)",
+  laptop: "(max-width: 1024px)",
+  tablet: "(max-width: 768px)",
+  phone: "(max-width: 640px)",
+  mini: "(max-width: 425px)",
+};
