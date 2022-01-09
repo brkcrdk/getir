@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { Checkbox } from "components";
 import { fetchTags } from "api";
 import FilterContainer from "./FilterContainer";
-import FilterSkeleton from "./FilterSkeleton";
+import LoadingFilter from "./LoadingFilter";
+import useMultipleSelect from "./useMultipleSelect";
 
 const Brands = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const { onSelect, selectedFilters } = useMultipleSelect();
 
   useEffect(() => {
     const getTags = async () => {
@@ -18,24 +20,22 @@ const Brands = () => {
     getTags();
   }, []);
 
-  const renderLoading = [...Array(4).fill(0)].map((_, i: number) => (
-    <FilterSkeleton key={`product-skeleton-${i}`} />
-  ));
-
   return (
-    <FilterContainer title="Tags" searchable>
-      {loading
-        ? renderLoading
-        : tags.map((tag) => (
-            <Checkbox
-              key={tag}
-              label={tag}
-              id={tag}
-              checkboxType="tags"
-              onChange={() => console.log(tag)}
-              checked={tag === "All"}
-            />
-          ))}
+    <FilterContainer title="Tags" searchPlaceholder="Search tag.." searchable>
+      {loading ? (
+        <LoadingFilter />
+      ) : (
+        tags.map((tag) => (
+          <Checkbox
+            key={tag}
+            label={tag}
+            id={tag}
+            checkboxType="tags"
+            onChange={() => onSelect(tag)}
+            checked={selectedFilters.includes(tag)}
+          />
+        ))
+      )}
     </FilterContainer>
   );
 };
