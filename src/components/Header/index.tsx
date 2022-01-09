@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Container } from "components";
-import Basket from "./Basket";
+import BasketButton from "./BasketButton";
 
 const Header = () => {
   return (
@@ -8,7 +8,7 @@ const Header = () => {
       <HeaderContent>
         <div />
         <img src="/Logo.svg" alt="logo" />
-        <Basket />
+        <BasketButton />
       </HeaderContent>
     </HeaderWrapper>
   );
