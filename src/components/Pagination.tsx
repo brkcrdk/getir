@@ -29,16 +29,16 @@ const Pagination: FC<PaginationProps> = ({
       pageRangeDisplayed={isTablet ? 0 : 2}
       marginPagesDisplayed={isTablet ? 0 : 2}
       previousLabel={
-        <li>
+        <>
           <Icon iconName="arrow-left" size={14} />
           Previous
-        </li>
+        </>
       }
       nextLabel={
-        <li>
+        <>
           Next
           <Icon iconName="arrow-right" size={14} />
-        </li>
+        </>
       }
     />
   );
