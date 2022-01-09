@@ -17,7 +17,7 @@ export const sidebarReducer = (state = initialState, action: ActionType) => {
   switch (action.type) {
     case "TOGGLE_SIDEBAR":
       if (!state.isOpen) {
-        return { ...state, isOpen: true };
+        return { ...state, ...action.payload, isOpen: true };
       } else {
         return { isOpen: false };
       }

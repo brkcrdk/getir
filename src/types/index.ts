@@ -26,3 +26,9 @@ export const actionTypes = {
     UPDATE_PRODUCTS_REQUESTED: "UPDATE_PRODUCTS_REQUESTED",
   },
 };
+
+export interface SidebarTypes {
+  isOpen: boolean;
+  sidebarPosition?: string;
+  sidebarContent?: React.ReactNode | null;
+}
