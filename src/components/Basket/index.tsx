@@ -23,7 +23,6 @@ export default Basket;
 interface StyleProps {
   isHidden: boolean;
 }
-
 const BasketWrapper = styled.div<StyleProps>`
   width: 100%;
   max-width: 296px;
