@@ -18,6 +18,9 @@ export default Header;
 
 const HeaderWrapper = styled.header`
   background: ${(p) => p.theme.colors.main};
+  position: sticky;
+  top: 0;
+  z-index: 999;
 `;
 
 const HeaderContent = styled(Container)`
