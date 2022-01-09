@@ -1,11 +1,17 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useMediaQuery } from "usehooks-ts";
 import { Icon, Basket } from "components";
 import { device } from "theme";
-import { useMediaQuery } from "usehooks-ts";
+import { SidebarTypes } from "types";
+
+interface StateProps {
+  sidebarStore: SidebarTypes;
+}
 
 const BasketButton = () => {
+  const { isOpen } = useSelector((s: StateProps) => s.sidebarStore);
   const dispatch = useDispatch();
   const isDesktop = useMediaQuery(device.desktop);
 
@@ -15,17 +21,16 @@ const BasketButton = () => {
     }
   }, [isDesktop]);
 
+  const toggleSidebar = () =>
+    dispatch({
+      type: "OPEN_SIDEBAR",
+      payload: {
+        sidebarContent: <Basket sidebarBasket />,
+      },
+    });
+
   return (
-    <BasketWrapper
-      onClick={() =>
-        dispatch({
-          type: "TOGGLE_SIDEBAR",
-          payload: {
-            sidebarContent: <Basket sidebarBasket />,
-          },
-        })
-      }
-    >
+    <BasketWrapper onClick={toggleSidebar} isSidebarOpen={isOpen}>
       <Icon iconName="basket" size={24} />
       <span>₺ 34</span>
     </BasketWrapper>
@@ -34,7 +39,10 @@ const BasketButton = () => {
 
 export default BasketButton;
 
-const BasketWrapper = styled.button`
+interface StyleProps {
+  isSidebarOpen: boolean;
+}
+const BasketWrapper = styled.button<StyleProps>`
   background: ${(p) => p.theme.colors.darkMain};
   color: #fff;
   display: flex;
@@ -48,6 +56,6 @@ const BasketWrapper = styled.button`
     font-size: 14px;
   }
   @media ${device.desktop} {
-    pointer-events: all;
+    pointer-events: ${(p) => (p.isSidebarOpen ? "none" : "all")};
   }
 `;
