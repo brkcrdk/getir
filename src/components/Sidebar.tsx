@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { SidebarTypes } from "types";
@@ -17,6 +17,15 @@ const Sidebar = () => {
   const closeSidebar = () => dispatch({ type: "CLOSE_SIDEBAR" });
 
   useOnClickOutside(wrapperRef, closeSidebar);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "initial";
+    }
+  }, [isOpen]);
+
   return (
     <SidebarWrapper>
       <Backdrop isOpen={isOpen} />
