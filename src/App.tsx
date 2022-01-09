@@ -2,7 +2,14 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { actionTypes } from "types";
-import { Header, Container, Filters, Basket, Products } from "components";
+import {
+  Header,
+  Container,
+  Filters,
+  Basket,
+  Products,
+  Sidebar,
+} from "components";
 
 interface StateType {
   productStore: {
@@ -36,6 +43,7 @@ function App() {
         <Products />
         <Basket />
       </MainContainer>
+      <Sidebar />
     </>
   );
 }
