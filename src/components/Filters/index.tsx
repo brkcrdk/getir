@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import { device } from "theme";
 import Sorting from "./Sorting";
 import Brands from "./Brands";
 import Tags from "./Tags";
-import { device } from "theme";
 
 const Filters = ({ sidebarFilter = false }) => {
   return (
