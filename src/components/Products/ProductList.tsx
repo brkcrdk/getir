@@ -13,7 +13,9 @@ interface StateType {
 
 const ProductList = () => {
   const { products, loading } = useSelector((s: StateType) => s.productStore);
-  const renderLoading = [...Array(16).fill(0)].map(() => <CardSkeleton />);
+  const renderLoading = [...Array(16).fill(0)].map((_, i: number) => (
+    <CardSkeleton key={`product-skeleton-${i}`} />
+  ));
 
   return (
     <ProductListWrapper>

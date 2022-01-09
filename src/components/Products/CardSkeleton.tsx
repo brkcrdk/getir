@@ -1,7 +1,7 @@
 import ContentLoader, { IContentLoaderProps } from "react-content-loader";
 import theme from "theme";
 
-const Skeleton: React.FC<IContentLoaderProps> = (props) => (
+const CardSkeleton: React.FC<IContentLoaderProps> = (props) => (
   <ContentLoader
     speed={2}
     width={124}
@@ -20,4 +20,4 @@ const Skeleton: React.FC<IContentLoaderProps> = (props) => (
   </ContentLoader>
 );
 
-export default Skeleton;
+export default CardSkeleton;
