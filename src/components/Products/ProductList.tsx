@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { ProductType } from "types";
 import ProductCard from "./ProductCard";
 import CardSkeleton from "./CardSkeleton";
-import { device } from "theme";
 
 interface StateType {
   productStore: {
@@ -35,13 +34,9 @@ const ProductListWrapper = styled.div`
   margin-bottom: 32px;
   display: grid;
   gap: 24px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(124px, 1fr));
   background: #fff;
   border-radius: 2px;
   padding: 20px;
   box-shadow: ${(p) => p.theme.colors.boxShadows.filterContainer};
-
-  /* @media ${device.desktop} { */
-  /* grid-template-columns: repeat(3, 1fr); */
-  /* } */
 `;
