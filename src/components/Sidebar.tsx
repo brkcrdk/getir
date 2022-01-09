@@ -1,21 +1,30 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
+import { SidebarTypes } from "types";
+import { useOnClickOutside } from "usehooks-ts";
 
 interface StateProps {
-  sidebarStore: {
-    isOpen: boolean;
-  };
+  sidebarStore: SidebarTypes;
 }
 
 const Sidebar = () => {
-  const { isOpen } = useSelector((s: StateProps) => s.sidebarStore);
+  const { isOpen, sidebarContent } = useSelector(
+    (s: StateProps) => s.sidebarStore
+  );
   const dispatch = useDispatch();
+  const wrapperRef = useRef(null);
+  const closeSidebar = () => dispatch({ type: "CLOSE_SIDEBAR" });
 
+  useOnClickOutside(wrapperRef, closeSidebar);
   return (
     <SidebarWrapper>
       <Backdrop isOpen={isOpen} />
-      <SidebarContent>cc</SidebarContent>
+      {
+        <SidebarContent ref={wrapperRef} isOpen={isOpen}>
+          {sidebarContent}
+        </SidebarContent>
+      }
     </SidebarWrapper>
   );
 };
@@ -23,7 +32,7 @@ const Sidebar = () => {
 export default Sidebar;
 
 interface StyleProps {
-  isOpen?: boolean;
+  isOpen: boolean;
 }
 
 const SidebarWrapper = styled.div``;
@@ -32,13 +41,17 @@ const Backdrop = styled.div<StyleProps>`
   background: rgba(0, 0, 0, 0.4);
   position: fixed;
   inset: 0;
+  display: ${(p) => (p.isOpen ? "initial" : "none")};
 `;
 
-const SidebarContent = styled.div`
+const SidebarContent = styled.div<StyleProps>`
   position: fixed;
   top: 76px;
-  right: 0;
+  right: ${(p) => (p.isOpen ? 0 : "-100%")};
   background: #fff;
-  height: 100%;
+  min-width: 300px;
   z-index: 99;
+  transition: all 0.5s ease-in-out;
+  overflow: auto;
+  height: calc(100vh - 76px);
 `;

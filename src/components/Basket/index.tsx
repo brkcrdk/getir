@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { FC } from "react";
 import styled from "styled-components";
 import { device } from "theme";
-
 import BasketItem from "./BasketItem";
 
-const Basket = () => {
-  const [isHidden, setHidden] = useState(true);
+interface BasketProps {
+  sidebarBasket?: boolean;
+}
 
+const Basket: FC<BasketProps> = ({ sidebarBasket = false }) => {
   return (
-    <BasketWrapper isHidden={true}>
+    <BasketWrapper sidebarBasket={sidebarBasket}>
       <ContentWrapper>
         <BasketItem />
         <BasketItem />
@@ -21,7 +22,7 @@ const Basket = () => {
 export default Basket;
 
 interface StyleProps {
-  isHidden: boolean;
+  sidebarBasket: boolean;
 }
 const BasketWrapper = styled.div<StyleProps>`
   width: 100%;
@@ -33,11 +34,9 @@ const BasketWrapper = styled.div<StyleProps>`
   height: 100%;
   background: ${(p) => p.theme.colors.main};
   @media ${device.desktop} {
-    position: fixed;
-    right: ${(p) => (p.isHidden ? 0 : "-300px")};
-    height: 100%;
-    top: 76px;
+    display: ${(p) => !p.sidebarBasket && "none"};
     background: #fff;
+    max-width: initial;
   }
 `;
 
