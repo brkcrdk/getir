@@ -1,8 +1,18 @@
 import { FC } from "react";
 import styled from "styled-components";
 
+type iconNames =
+  | "filter"
+  | "clear"
+  | "plus"
+  | "minus"
+  | "check"
+  | "arrow-left"
+  | "arrow-right"
+  | "basket";
+
 interface IconProps {
-  iconName: string;
+  iconName: iconNames;
   size?: number;
   color?: string;
 }
