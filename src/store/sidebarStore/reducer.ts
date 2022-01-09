@@ -1,24 +1,30 @@
-import React from "react";
+import { SidebarTypes } from "types";
 
 const initialState = {
   isOpen: false,
+  sidebarPosition: "left",
+  sidebarContent: null,
 };
 
 interface ActionType {
   type: string;
-  payload: {
-    isOpen: boolean;
-    sidebarPosition: string;
-    sidebarContent: React.ReactNode | null;
-  };
+  payload: SidebarTypes;
 }
 
 export const sidebarReducer = (state = initialState, action: ActionType) => {
   switch (action.type) {
     case "OPEN_SIDEBAR":
-      return { ...action.payload, isOpen: true };
+      const newState = {
+        isOpen: true,
+        sidebarPosition: action.payload.sidebarPosition || "left",
+        sidebarContent: action.payload.sidebarContent,
+      };
+      return newState;
     case "CLOSE_SIDEBAR":
-      return { isOpen: false };
+      return {
+        ...state,
+        isOpen: false,
+      };
     default:
       return state;
   }
