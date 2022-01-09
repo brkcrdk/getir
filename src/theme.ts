@@ -7,6 +7,7 @@ const theme: DefaultTheme = {
     chipBackground: "#F2F0FD",
     imageBorder: "#F3F0FE",
     backdrop: "rgba(0, 0, 0, 0.4)",
+    globalBg: "#FAFAFA",
     blackScale: {
       black: "#525252",
       black50: "#F4F4F4",

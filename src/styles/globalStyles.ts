@@ -9,9 +9,10 @@ const GlobalStyle = createGlobalStyle`
 	}
   html{
     -webkit-font-smoothing: antialiased;
+    height: 100vh;
   }
   body{
-    background: #FAFAFA;
+    background: ${(p) => p.theme.colors.globalBg};
   }
 	a {
 		text-decoration: none;

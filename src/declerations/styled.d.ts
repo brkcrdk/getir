@@ -9,6 +9,7 @@ declare module "styled-components" {
       chipBackground: string;
       imageBorder: string;
       backdrop: string;
+      globalBg: string;
       grayScale: {
         gray500: string;
         gray700: string;
