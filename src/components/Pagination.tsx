@@ -1,10 +1,10 @@
 import { FC } from "react";
 import styled from "styled-components";
+import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 import { useMediaQuery } from "usehooks-ts";
 
 import { Icon } from "components";
 import { device } from "theme";
-import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 
 interface PaginationProps {
   activePage: number;
