@@ -1,11 +1,12 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import styled from "styled-components";
 import { Input } from "components";
 interface FilterProps {
-  children: React.ReactNode;
+  children: ReactNode;
   title: string;
   searchable?: boolean;
   searchPlaceholder?: string;
+  onSearch?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const FilterContainer: FC<FilterProps> = ({
@@ -13,14 +14,19 @@ const FilterContainer: FC<FilterProps> = ({
   title,
   searchable = false,
   searchPlaceholder = "Placeholder",
+  onSearch,
   ...props
 }) => {
   return (
-    <FilterContainerWrapper {...props}>
+    <FilterContainerWrapper searchable={searchable} {...props}>
       <Title>{title}</Title>
       <FilterTest searchable={searchable}>
         {searchable && (
-          <Input className="search-input" placeholder={searchPlaceholder} />
+          <Input
+            className="search-input"
+            placeholder={searchPlaceholder}
+            onChange={onSearch}
+          />
         )}
         <FilterContent searchable={searchable}>{children}</FilterContent>
       </FilterTest>
@@ -34,7 +40,7 @@ interface StyleProps {
   searchable: boolean;
 }
 
-const FilterContainerWrapper = styled.form`
+const FilterContainerWrapper = styled.form<StyleProps>`
   width: 100%;
 `;
 
@@ -46,10 +52,12 @@ const Title = styled.legend`
 `;
 
 const FilterTest = styled.div<StyleProps>`
-  background: #fff;
-  box-shadow: ${(p) => p.theme.colors.boxShadows.filterContainer};
   border-radius: 2px;
   padding-bottom: ${(p) => p.searchable && "24px"};
+  background: #fff;
+  box-shadow: ${(p) => p.theme.colors.boxShadows.filterContainer};
+  min-height: ${(p) => (p.searchable ? "320px" : "initial")};
+
   .search-input {
     width: calc(100% - 48px);
     margin: 24px 0 12px 24px;

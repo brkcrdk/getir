@@ -7,8 +7,10 @@ import useMultipleSelect from "./useMultipleSelect";
 
 const Brands = () => {
   const [tags, setTags] = useState<string[]>([]);
+
   const [loading, setLoading] = useState(true);
-  const { onSelect, selectedFilters } = useMultipleSelect();
+  const { onSelect, selectedFilters, handleSearch, searchResults } =
+    useMultipleSelect(tags);
 
   useEffect(() => {
     const getTags = async () => {
@@ -21,11 +23,16 @@ const Brands = () => {
   }, []);
 
   return (
-    <FilterContainer title="Tags" searchPlaceholder="Search tag.." searchable>
+    <FilterContainer
+      title="Tags"
+      searchPlaceholder="Search tag.."
+      searchable
+      onSearch={handleSearch}
+    >
       {loading ? (
         <LoadingFilter />
       ) : (
-        tags.map((tag) => (
+        searchResults.map((tag) => (
           <Checkbox
             key={tag}
             label={tag}
