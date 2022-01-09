@@ -1,7 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 
-const useFilter = () => {
+const useFilter = (initialState: string[]) => {
+  const [searchVal, setSearchVal] = useState("");
+  const [searchResults, setResults] = useState<string[]>([]);
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchVal(event.target.value.toLowerCase());
+  };
+
+  useEffect(() => {
+    if (searchVal) {
+      const filteredTags = initialState.filter((state) =>
+        state.toLowerCase().includes(searchVal)
+      );
+      setResults(filteredTags);
+    } else {
+      setResults(initialState);
+    }
+  }, [searchVal, initialState]);
 
   const onSelect = (selectedOpt: string) => {
     const isSelected = selectedFilters.includes(selectedOpt);
@@ -25,7 +42,7 @@ const useFilter = () => {
     }
   }, [selectedFilters]);
 
-  return { onSelect, selectedFilters };
+  return { onSelect, selectedFilters, handleSearch, searchResults };
 };
 
 export default useFilter;
