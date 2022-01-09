@@ -8,6 +8,7 @@ declare module "styled-components" {
       darkMain: string;
       chipBackground: string;
       imageBorder: string;
+      backdrop: string;
       grayScale: {
         gray500: string;
         gray700: string;
