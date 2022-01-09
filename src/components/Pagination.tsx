@@ -1,6 +1,10 @@
 import { FC } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+import { useMediaQuery } from "usehooks-ts";
+
 import { Icon } from "components";
+import { device } from "theme";
+import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 
 interface PaginationProps {
   activePage: number;
@@ -17,83 +21,66 @@ const Pagination: FC<PaginationProps> = ({
   handleGoTo,
   handleNext,
 }) => {
+  const isTablet = useMediaQuery(device.tablet);
+
   return (
-    <PaginationWrapper data-testid="pagination">
-      <PageItem
-        className="prev"
-        disabled={activePage === 1}
-        onClick={handlePrev}
-      >
-        <Icon size={14} iconName="arrow-left" />
-        Prev
-      </PageItem>
-      {[1, 2, 3].map((page) => (
-        <PageItem
-          className={activePage === page + 1 ? "active" : ""}
-          key={`pagination-page-${page}`}
-          // onClick={() => handleGoTo(page + 1)}
-        >
-          {page + 1}
-        </PageItem>
-      ))}
-      <PageItem
-        className="next"
-        disabled={activePage === pageCount}
-        onClick={handleNext}
-      >
-        Next
-        <Icon size={14} iconName="arrow-right" />
-      </PageItem>
-    </PaginationWrapper>
+    <CustomPaginate
+      pageCount={pageCount}
+      pageRangeDisplayed={isTablet ? 0 : 2}
+      marginPagesDisplayed={isTablet ? 0 : 2}
+      previousLabel={
+        <li>
+          <Icon iconName="arrow-left" size={14} />
+          Previous
+        </li>
+      }
+      nextLabel={
+        <li>
+          Next
+          <Icon iconName="arrow-right" size={14} />
+        </li>
+      }
+    />
   );
 };
 
 export default Pagination;
 
-interface StyleProps {
-  disabled?: boolean;
-}
-
-const PaginationWrapper = styled.ul`
+const CustomPaginate = styled(ReactPaginate)<ReactPaginateProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-const PageItem = styled.li<StyleProps>`
-  display: flex;
-  align-items: center;
-  color: ${(p) => p.theme.colors.grayScale.gray500};
-  font-weight: 600;
-  padding: 12px;
-  &.active {
-    background: ${(p) => p.theme.colors.main};
-    border-radius: 2px;
-    color: #fff;
-    &:hover {
+  li {
+    display: flex;
+    align-items: center;
+    color: ${(p) => p.theme.colors.grayScale.gray500};
+    font-weight: 600;
+    padding: 12px;
+    &.selected {
+      background: ${(p) => p.theme.colors.main};
+      border-radius: 2px;
       color: #fff;
+      &:hover {
+        color: #fff;
+      }
     }
-  }
-  &:hover {
-    color: ${(p) => p.theme.colors.main};
-    cursor: pointer;
-  }
-  &.prev {
-    margin-right: 60px;
-    .icon-arrow-left {
-      margin-right: 12px;
+    &:hover {
+      color: ${(p) => p.theme.colors.main};
+      cursor: pointer;
     }
-  }
-  &.next {
-    margin-left: 60px;
-    .icon-arrow-right {
-      margin-left: 12px;
+    &.previous {
+      .icon-arrow-left {
+        margin-right: 12px;
+      }
     }
-  }
-  ${(p) =>
-    p.disabled &&
-    css`
+    &.next {
+      .icon-arrow-right {
+        margin-left: 12px;
+      }
+    }
+    &.disabled {
+      opacity: 0.4;
       pointer-events: none;
-      opacity: 0.7;
-    `}
+    }
+  }
 `;
