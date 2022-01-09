@@ -26,6 +26,7 @@ const BasketButton = () => {
       type: "OPEN_SIDEBAR",
       payload: {
         sidebarContent: <Basket sidebarBasket />,
+        sidebarPosition: "right",
       },
     });
 
