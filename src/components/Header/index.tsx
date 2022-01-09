@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { Container } from "components";
 import BasketButton from "./BasketButton";
+import FilterButton from "./FilterButton";
 
 const Header = () => {
   return (
     <HeaderWrapper>
       <HeaderContent>
-        <div />
+        <FilterButton />
         <img src="/Logo.svg" alt="logo" />
         <BasketButton />
       </HeaderContent>
