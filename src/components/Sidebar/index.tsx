@@ -15,8 +15,6 @@ const Sidebar = () => {
     (s: StateProps) => s.sidebarStore
   );
 
-  console.log({ isOpen, sidebarContent, sidebarPosition });
-
   const dispatch = useDispatch();
   const wrapperRef = useRef(null);
 
