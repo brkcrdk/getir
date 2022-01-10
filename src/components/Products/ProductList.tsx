@@ -21,7 +21,12 @@ const ProductList = () => {
 
   const renderProducts = products.length ? (
     products.map((product: ProductType, index) => (
-      <ProductCard key={`product-${index}`} />
+      <ProductCard
+        imageUrl={`https://picsum.photos/300/300?random=${index}`}
+        key={`product-${index}`}
+        price={product.price}
+        name={product.name}
+      />
     ))
   ) : (
     <NothingFound />
