@@ -5,9 +5,15 @@ interface ProductCardProps {
   imageUrl: string;
   price: number;
   name: string;
+  onClick: () => void;
 }
 
-const ProductCard: FC<ProductCardProps> = ({ imageUrl, price, name }) => {
+const ProductCard: FC<ProductCardProps> = ({
+  imageUrl,
+  price,
+  name,
+  onClick,
+}) => {
   return (
     <ProductCardWrapper>
       <ImageContainer>
@@ -16,7 +22,7 @@ const ProductCard: FC<ProductCardProps> = ({ imageUrl, price, name }) => {
       <ProductInfo>
         <span>₺{price}</span>
         <h4 title={name}>{name}</h4>
-        <button>Add</button>
+        <button onClick={onClick}>Add</button>
       </ProductInfo>
     </ProductCardWrapper>
   );
