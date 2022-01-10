@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { ProductType } from "types";
 import ProductCard from "./ProductCard";
 import CardSkeleton from "./CardSkeleton";
+import { device } from "theme";
 
 interface StateType {
   productStore: {
@@ -39,4 +40,7 @@ const ProductListWrapper = styled.div`
   border-radius: 2px;
   padding: 20px;
   box-shadow: ${(p) => p.theme.colors.boxShadows.filterContainer};
+  @media ${device.phone} {
+    gap: 12px;
+  }
 `;
