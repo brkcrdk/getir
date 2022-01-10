@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { ProductType } from "types";
+import { device } from "theme";
+import { NothingFound } from "components";
 import ProductCard from "./ProductCard";
 import CardSkeleton from "./CardSkeleton";
-import { device } from "theme";
 
 interface StateType {
   productStore: {
@@ -18,13 +19,17 @@ const ProductList = () => {
     <CardSkeleton key={`product-skeleton-${i}`} />
   ));
 
+  const renderProducts = products.length ? (
+    products.map((product: ProductType, index) => (
+      <ProductCard key={`product-${index}`} />
+    ))
+  ) : (
+    <NothingFound />
+  );
+
   return (
     <ProductListWrapper>
-      {loading
-        ? renderLoading
-        : products.map((product: ProductType, index) => (
-            <ProductCard key={`product-${index}`} />
-          ))}
+      {loading ? renderLoading : renderProducts}
     </ProductListWrapper>
   );
 };
@@ -40,6 +45,7 @@ const ProductListWrapper = styled.div`
   border-radius: 2px;
   padding: 20px;
   box-shadow: ${(p) => p.theme.colors.boxShadows.filterContainer};
+
   @media ${device.phone} {
     gap: 12px;
   }

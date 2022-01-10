@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Checkbox } from "components";
+import { Checkbox, NothingFound } from "components";
 import { fetchBrands } from "api";
 import { actionTypes, StoreTypes } from "types";
 
@@ -51,7 +51,7 @@ const Brands = () => {
       />
     ))
   ) : (
-    <span>No result</span>
+    <NothingFound />
   );
 
   return (

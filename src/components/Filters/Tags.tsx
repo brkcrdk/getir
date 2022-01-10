@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Checkbox } from "components";
+import { Checkbox, NothingFound } from "components";
 import { fetchTags } from "api";
 import { actionTypes, StoreTypes } from "types";
 
@@ -39,6 +39,21 @@ const Brands = () => {
     });
   }, [selectedFilters]);
 
+  const renderResults = searchResults.length ? (
+    searchResults.map((tag) => (
+      <Checkbox
+        key={tag}
+        label={tag}
+        id={tag}
+        checkboxType="tags"
+        onChange={() => onSelect(tag)}
+        checked={selectedFilters.includes(tag)}
+      />
+    ))
+  ) : (
+    <NothingFound />
+  );
+
   return (
     <FilterContainer
       title="Tags"
@@ -46,20 +61,7 @@ const Brands = () => {
       searchable
       onSearch={handleSearch}
     >
-      {loading ? (
-        <LoadingFilter />
-      ) : (
-        searchResults.map((tag) => (
-          <Checkbox
-            key={tag}
-            label={tag}
-            id={tag}
-            checkboxType="tags"
-            onChange={() => onSelect(tag)}
-            checked={selectedFilters.includes(tag)}
-          />
-        ))
-      )}
+      {loading ? <LoadingFilter /> : renderResults}
     </FilterContainer>
   );
 };
