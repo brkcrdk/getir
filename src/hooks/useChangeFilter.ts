@@ -15,7 +15,7 @@ const useChangeFilter = () => {
 
   const handleChangeFilter = (
     filterType: filters,
-    filterData: string | string[]
+    filterData: string | string[] | number
   ) => {
     dispatch({
       type: actionTypes.productStore.UPDATE_PRODUCTS_REQUESTED,

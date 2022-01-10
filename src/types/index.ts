@@ -34,6 +34,8 @@ export interface StoreTypes {
     products: ProductType[];
     loading: boolean;
     filters: FilterTypes;
+    totalCount: number;
+    totalPages: number;
   };
   sidebarStore: SidebarTypes;
 }
