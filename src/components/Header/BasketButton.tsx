@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "usehooks-ts";
 import { Icon, Basket } from "components";
 import { device } from "theme";
-import { SidebarTypes } from "types";
+import { SidebarTypes, actionTypes } from "types";
 
 interface StateProps {
   sidebarStore: SidebarTypes;
@@ -17,13 +17,13 @@ const BasketButton = () => {
 
   useEffect(() => {
     if (!isDesktop) {
-      dispatch({ type: "CLOSE_SIDEBAR" });
+      dispatch({ type: actionTypes.sidebarStore.CLOSE_SIDEBAR });
     }
   }, [isDesktop]);
 
   const toggleSidebar = () =>
     dispatch({
-      type: "OPEN_SIDEBAR",
+      type: actionTypes.sidebarStore.OPEN_SIDEBAR,
       payload: {
         sidebarContent: <Basket sidebarBasket />,
         sidebarPosition: "right",
