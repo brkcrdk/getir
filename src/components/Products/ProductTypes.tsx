@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { fetchProductTypes } from "api";
 import { Badge } from "components";
+import { useChangeFilter } from "hooks";
 
 const ProductTypes = () => {
   const [types, setTypes] = useState([]);
+  const [selectedType, setSelectedType] = useState("mug");
+  const { handleChangeFilter } = useChangeFilter();
 
   useEffect(() => {
     const getProductTypes = async () => {
@@ -14,10 +17,20 @@ const ProductTypes = () => {
     getProductTypes();
   }, []);
 
+  const handleChangeType = (type: string) => {
+    handleChangeFilter("itemType", type);
+    setSelectedType(type);
+  };
+
   return (
     <ProductTypesWrapper>
       {types.map((type) => (
-        <Badge key={type} label={type} isActive={type === "mug"} />
+        <Badge
+          key={type}
+          label={type}
+          isActive={type === selectedType}
+          onClick={() => handleChangeType(type)}
+        />
       ))}
     </ProductTypesWrapper>
   );

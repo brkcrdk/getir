@@ -1,7 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { actionTypes, StoreTypes } from "types";
 
-type filters = "_page" | "_limit" | "_sort" | "manufacturer_like" | "tags_like";
+type filters =
+  | "_page"
+  | "_limit"
+  | "_sort"
+  | "manufacturer_like"
+  | "tags_like"
+  | "itemType";
 
 const useChangeFilter = () => {
   const dispatch = useDispatch();
