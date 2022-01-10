@@ -1,24 +1,14 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Radio } from "components";
-import { actionTypes, StoreTypes } from "types";
+import { useChangeFilter } from "hooks";
 
 import FilterContainer from "./FilterContainer";
 const Sorting = () => {
   const [selectedSort, setSelected] = useState("price_asc");
-  const dispatch = useDispatch();
-  const { filters } = useSelector((s: StoreTypes) => s.productStore);
+  const { handleChangeFilter } = useChangeFilter();
 
   const handleChange = (type: string) => {
-    dispatch({
-      type: actionTypes.productStore.UPDATE_PRODUCTS_REQUESTED,
-      payload: {
-        filters: {
-          ...filters,
-          _sort: type,
-        },
-      },
-    });
+    handleChangeFilter("_sort", type);
     return setSelected(type);
   };
 

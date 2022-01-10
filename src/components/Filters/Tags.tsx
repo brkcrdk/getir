@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Checkbox, NothingFound } from "components";
 import { fetchTags } from "api";
-import { actionTypes, StoreTypes } from "types";
+import { useChangeFilter } from "hooks";
 
 import FilterContainer from "./FilterContainer";
 import LoadingFilter from "./LoadingFilter";
@@ -13,9 +12,8 @@ const Brands = () => {
   const [loading, setLoading] = useState(true);
   const { onSelect, selectedFilters, handleSearch, searchResults } =
     useMultipleSelect(tags);
-  const dispatch = useDispatch();
-  const { filters } = useSelector((s: StoreTypes) => s.productStore);
 
+  const { handleChangeFilter } = useChangeFilter();
   useEffect(() => {
     const getTags = async () => {
       const tagResponse = await fetchTags();
@@ -28,15 +26,7 @@ const Brands = () => {
 
   useEffect(() => {
     const filterAll = selectedFilters.filter((tag) => tag !== "All");
-    dispatch({
-      type: actionTypes.productStore.UPDATE_PRODUCTS_REQUESTED,
-      payload: {
-        filters: {
-          ...filters,
-          tags_like: filterAll,
-        },
-      },
-    });
+    handleChangeFilter("tags_like", filterAll);
   }, [selectedFilters]);
 
   const renderResults = searchResults.length ? (
