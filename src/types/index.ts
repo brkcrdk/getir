@@ -1,11 +1,3 @@
-export interface FilterTypes {
-  _page: number;
-  _limit: number;
-  _sort?: string | null;
-  manufacturer_like?: string[] | null;
-  tags_like?: string[] | null;
-}
-
 export interface ProductType {
   tags: string[];
   price: number;
@@ -23,10 +15,27 @@ export interface ResultType {
   totalPages: number;
 }
 
+export interface FilterTypes {
+  _page: number;
+  _limit: number;
+  _sort?: string | null;
+  manufacturer_like?: string[] | null;
+  tags_like?: string[] | null;
+}
+
 export interface SidebarTypes {
   isOpen: boolean;
   sidebarPosition?: string;
   sidebarContent?: React.ReactNode | null;
+}
+
+export interface BasketType {
+  count: number;
+  item: ProductType;
+}
+
+export interface BasketTypes {
+  basket: BasketType[];
 }
 
 export interface StoreTypes {
@@ -38,6 +47,7 @@ export interface StoreTypes {
     totalPages: number;
   };
   sidebarStore: SidebarTypes;
+  basketStore: BasketTypes;
 }
 
 export const actionTypes = {
@@ -52,5 +62,8 @@ export const actionTypes = {
   sidebarStore: {
     CLOSE_SIDEBAR: "CLOSE_SIDEBAR",
     OPEN_SIDEBAR: "OPEN_SIDEBAR",
+  },
+  basketStore: {
+    ADD_TO_BASKET: "ADD_TO_BASKET",
   },
 };

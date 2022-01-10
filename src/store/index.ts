@@ -3,11 +3,13 @@ import createSagaMiddleware from "@redux-saga/core";
 import rootSaga from "./rootSaga";
 import { productReducer } from "./productsStore/reducer";
 import { sidebarReducer } from "./sidebarStore/reducer";
-const sagaMiddleware = createSagaMiddleware();
+import { basketReducer } from "./basketStore/reducer";
 
+const sagaMiddleware = createSagaMiddleware();
 const reducers = combineReducers({
   productStore: productReducer,
   sidebarStore: sidebarReducer,
+  basketStore: basketReducer,
 });
 
 export const store = createStore(reducers, applyMiddleware(sagaMiddleware));
