@@ -1,4 +1,4 @@
-import { SidebarTypes } from "types";
+import { SidebarTypes, actionTypes } from "types";
 
 const initialState = {
   isOpen: false,
@@ -13,14 +13,14 @@ interface ActionType {
 
 export const sidebarReducer = (state = initialState, action: ActionType) => {
   switch (action.type) {
-    case "OPEN_SIDEBAR":
+    case actionTypes.sidebarStore.OPEN_SIDEBAR:
       const newState = {
         isOpen: true,
         sidebarPosition: action.payload.sidebarPosition || "left",
         sidebarContent: action.payload.sidebarContent,
       };
       return newState;
-    case "CLOSE_SIDEBAR":
+    case actionTypes.sidebarStore.CLOSE_SIDEBAR:
       return {
         ...state,
         isOpen: false,

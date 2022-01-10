@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { useOnClickOutside } from "usehooks-ts";
 import { motion } from "framer-motion";
-import { SidebarTypes } from "types";
+import { SidebarTypes, actionTypes } from "types";
 import Backdrop from "./Backdrop";
 
 interface StateProps {
@@ -20,7 +20,7 @@ const Sidebar = () => {
 
   const closeSidebar = () => {
     if (isOpen) {
-      dispatch({ type: "CLOSE_SIDEBAR" });
+      dispatch({ type: actionTypes.sidebarStore.CLOSE_SIDEBAR });
     }
   };
 

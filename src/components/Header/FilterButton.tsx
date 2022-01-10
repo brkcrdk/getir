@@ -3,7 +3,7 @@ import { useMediaQuery } from "usehooks-ts";
 import { useDispatch, useSelector } from "react-redux";
 import { device } from "theme";
 import { Icon, Filters } from "components";
-import { SidebarTypes } from "types";
+import { SidebarTypes, actionTypes } from "types";
 
 interface StateProps {
   sidebarStore: SidebarTypes;
@@ -17,7 +17,7 @@ const FilterButton = () => {
 
   const openFilter = () => {
     dispatch({
-      type: "OPEN_SIDEBAR",
+      type: actionTypes.sidebarStore.OPEN_SIDEBAR,
       payload: {
         sidebarContent: <Filters sidebarFilter />,
       },
