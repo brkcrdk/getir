@@ -23,6 +23,21 @@ export interface ResultType {
   totalPages: number;
 }
 
+export interface SidebarTypes {
+  isOpen: boolean;
+  sidebarPosition?: string;
+  sidebarContent?: React.ReactNode | null;
+}
+
+export interface StoreTypes {
+  productStore: {
+    products: ProductType[];
+    loading: boolean;
+    filters: FilterTypes;
+  };
+  sidebarStore: SidebarTypes;
+}
+
 export const actionTypes = {
   productStore: {
     FETCH_PRODUCTS_REQUESTED: "FETCH_PRODUCTS_REQUESTED",
@@ -37,9 +52,3 @@ export const actionTypes = {
     OPEN_SIDEBAR: "OPEN_SIDEBAR",
   },
 };
-
-export interface SidebarTypes {
-  isOpen: boolean;
-  sidebarPosition?: string;
-  sidebarContent?: React.ReactNode | null;
-}
