@@ -1,6 +1,9 @@
 export interface FilterTypes {
   _page: number;
   _limit: number;
+  _sort?: string | null;
+  manufacturer_like?: string[] | null;
+  tags_like?: string[] | null;
 }
 
 export interface ProductType {
@@ -24,6 +27,14 @@ export const actionTypes = {
   productStore: {
     FETCH_PRODUCTS_REQUESTED: "FETCH_PRODUCTS_REQUESTED",
     UPDATE_PRODUCTS_REQUESTED: "UPDATE_PRODUCTS_REQUESTED",
+    FETCH_PRODUCTS: "FETCH_PRODUCTS",
+    UPDATE_FILTERS: "UPDATE_FILTERS",
+    START_LOADING: "START_LOADING",
+    END_LOADING: "END_LOADING",
+  },
+  sidebarStore: {
+    CLOSE_SIDEBAR: "CLOSE_SIDEBAR",
+    OPEN_SIDEBAR: "OPEN_SIDEBAR",
   },
 };
 
