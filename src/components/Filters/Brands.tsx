@@ -2,16 +2,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Checkbox } from "components";
 import { fetchBrands } from "api";
+import { actionTypes, StoreTypes } from "types";
+
 import FilterContainer from "./FilterContainer";
 import LoadingFilter from "./LoadingFilter";
 import useMultipleSelect from "./useMultipleSelect";
-import { FilterTypes } from "types";
-
-interface StateProps {
-  productStore: {
-    filters: FilterTypes;
-  };
-}
 
 const Brands = () => {
   const [brands, setBrands] = useState<string[]>([]);
@@ -19,7 +14,7 @@ const Brands = () => {
   const { onSelect, selectedFilters, handleSearch, searchResults } =
     useMultipleSelect(brands);
   const dispatch = useDispatch();
-  const { filters } = useSelector((s: StateProps) => s.productStore);
+  const { filters } = useSelector((s: StoreTypes) => s.productStore);
 
   useEffect(() => {
     const getBrands = async () => {
@@ -32,8 +27,16 @@ const Brands = () => {
   }, []);
 
   useEffect(() => {
-    console.log(selectedFilters);
-    // dispatch({type})
+    const filterAll = selectedFilters.filter((brand) => brand !== "All");
+    dispatch({
+      type: actionTypes.productStore.UPDATE_PRODUCTS_REQUESTED,
+      payload: {
+        filters: {
+          ...filters,
+          manufacturer_like: filterAll,
+        },
+      },
+    });
   }, [selectedFilters]);
 
   const renderResults = searchResults.length ? (
