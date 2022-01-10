@@ -6,21 +6,7 @@ import { useMediaQuery } from "usehooks-ts";
 import { Icon } from "components";
 import { device } from "theme";
 
-interface PaginationProps {
-  activePage: number;
-  pageCount: number;
-  handlePrev?: () => void;
-  handleGoTo?: () => void;
-  handleNext?: () => void;
-}
-
-const Pagination: FC<PaginationProps> = ({
-  activePage = 1,
-  pageCount = 2,
-  handlePrev,
-  handleGoTo,
-  handleNext,
-}) => {
+const Pagination: FC<ReactPaginateProps> = ({ pageCount = 2, ...props }) => {
   const isTablet = useMediaQuery(device.tablet);
 
   return (
@@ -40,6 +26,7 @@ const Pagination: FC<PaginationProps> = ({
           <Icon iconName="arrow-right" size={14} />
         </>
       }
+      {...props}
     />
   );
 };
