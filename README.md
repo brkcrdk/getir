@@ -1,7 +1,8 @@
-### [JSON server api](https://getir-locals-api.herokuapp.com)
-### [Frontend Url](https://getir-lj2sjswtj-brkcrdk.vercel.app/)
 
 ## Getir Studycase
+ 
+ - [JSON server api](https://getir-locals-api.herokuapp.com)
+ - [Frontend Url](https://getir-lj2sjswtj-brkcrdk.vercel.app/)
 
 This is a study case for getir. Main goals of this app:
  - List given products
