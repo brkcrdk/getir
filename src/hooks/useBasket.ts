@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { ProductType, actionTypes, StoreTypes } from "types";
@@ -5,6 +6,7 @@ import { ProductType, actionTypes, StoreTypes } from "types";
 const useBasket = () => {
   const dispatch = useDispatch();
   const { basket } = useSelector((s: StoreTypes) => s.basketStore);
+  const [totalPrice, setTotalPrice] = useState(0);
   const {
     ADD_TO_BASKET,
     REMOVE_FROM_BASKET,
@@ -39,7 +41,21 @@ const useBasket = () => {
     });
   };
 
-  return { addToBasket, removeFromBasket, updateCount, isInBasket, basket };
+  useEffect(() => {
+    const calculatedSum = basket.reduce((prev, cur) => {
+      return prev + cur.count * cur.item.price;
+    }, 0);
+    setTotalPrice(Number(calculatedSum.toFixed(2)));
+  }, [basket]);
+
+  return {
+    addToBasket,
+    removeFromBasket,
+    updateCount,
+    isInBasket,
+    basket,
+    totalPrice,
+  };
 };
 
 export default useBasket;
