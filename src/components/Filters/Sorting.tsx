@@ -3,6 +3,7 @@ import { Radio } from "components";
 import { useChangeFilter } from "hooks";
 
 import FilterContainer from "./FilterContainer";
+
 const Sorting = () => {
   const [selectedSort, setSelected] = useState("price_asc");
   const { handleChangeFilter } = useChangeFilter();

@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { Checkbox, NothingFound } from "components";
 import { fetchTags } from "api";
-import { useChangeFilter } from "hooks";
+import { useChangeFilter, useMultipleSelect } from "hooks";
 
 import FilterContainer from "./FilterContainer";
 import LoadingFilter from "./LoadingFilter";
-import useMultipleSelect from "./useMultipleSelect";
 
 const Brands = () => {
   const [tags, setTags] = useState<string[]>([]);

@@ -1,6 +1,7 @@
 import { FC, ReactNode } from "react";
 import styled from "styled-components";
 import { Input } from "components";
+
 interface FilterProps {
   children: ReactNode;
   title: string;
