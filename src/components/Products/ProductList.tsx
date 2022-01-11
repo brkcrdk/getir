@@ -9,13 +9,10 @@ import CardSkeleton from "./CardSkeleton";
 
 const ProductList = () => {
   const { products, loading } = useSelector((s: StoreTypes) => s.productStore);
-  const { addToBasket, removeFromBasket, isInBasket, updateCount, basket } =
-    useBasket();
+  const { addToBasket, removeFromBasket, isInBasket } = useBasket();
   const renderLoading = [...Array(16).fill(0)].map((_, i: number) => (
     <CardSkeleton key={`product-skeleton-${i}`} />
   ));
-
-  console.log(basket);
 
   const handleOnClick = (product: ProductType) => {
     if (isInBasket(product)) {
