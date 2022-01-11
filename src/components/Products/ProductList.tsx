@@ -1,28 +1,29 @@
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
-import { ProductType, actionTypes, StoreTypes } from "types";
+import { useSelector } from "react-redux";
+import { ProductType, StoreTypes } from "types";
 import { device } from "theme";
+import { useBasket } from "hooks";
 import { NothingFound } from "components";
 import ProductCard from "./ProductCard";
 import CardSkeleton from "./CardSkeleton";
 
 const ProductList = () => {
   const { products, loading } = useSelector((s: StoreTypes) => s.productStore);
-  const { basket } = useSelector((s: StoreTypes) => s.basketStore);
-
+  const { addToBasket, removeFromBasket, isInBasket, updateCount, basket } =
+    useBasket();
   const renderLoading = [...Array(16).fill(0)].map((_, i: number) => (
     <CardSkeleton key={`product-skeleton-${i}`} />
   ));
 
-  const dispatch = useDispatch();
-
-  const handleAdd = (selectedProduct: ProductType) => {
-    dispatch({
-      type: actionTypes.basketStore.ADD_TO_BASKET,
-      payload: selectedProduct,
-    });
-  };
   console.log(basket);
+
+  const handleOnClick = (product: ProductType) => {
+    if (isInBasket(product)) {
+      removeFromBasket(product);
+    } else {
+      addToBasket(product);
+    }
+  };
 
   const renderProducts = products.length ? (
     products.map((product: ProductType, index) => (
@@ -31,7 +32,8 @@ const ProductList = () => {
         key={`product-${index}`}
         price={product.price}
         name={product.name}
-        onClick={() => handleAdd(product)}
+        onClick={() => handleOnClick(product)}
+        inBasket={isInBasket(product)}
       />
     ))
   ) : (

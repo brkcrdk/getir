@@ -6,6 +6,7 @@ interface ProductCardProps {
   price: number;
   name: string;
   onClick: () => void;
+  inBasket: boolean;
 }
 
 const ProductCard: FC<ProductCardProps> = ({
@@ -13,6 +14,7 @@ const ProductCard: FC<ProductCardProps> = ({
   price,
   name,
   onClick,
+  inBasket = false,
 }) => {
   return (
     <ProductCardWrapper>
@@ -22,7 +24,7 @@ const ProductCard: FC<ProductCardProps> = ({
       <ProductInfo>
         <span>₺{price}</span>
         <h4 title={name}>{name}</h4>
-        <button onClick={onClick}>Add</button>
+        <button onClick={onClick}>{inBasket ? "Remove" : "Add"}</button>
       </ProductInfo>
     </ProductCardWrapper>
   );
