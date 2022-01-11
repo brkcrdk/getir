@@ -37,3 +37,12 @@ export const device = {
   phone: "(max-width: 640px)",
   mini: "(max-width: 425px)",
 };
+
+export const lineClamp = (clampCount: number) => {
+  return `
+  display: -webkit-box;
+  -webkit-line-clamp: ${clampCount};
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  `;
+};
