@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "usehooks-ts";
 import { Icon, Basket } from "components";
 import { device } from "theme";
+import { useBasket } from "hooks";
 import { SidebarTypes, actionTypes } from "types";
 
 interface StateProps {
@@ -14,7 +15,7 @@ const BasketButton = () => {
   const { isOpen } = useSelector((s: StateProps) => s.sidebarStore);
   const dispatch = useDispatch();
   const isDesktop = useMediaQuery(device.desktop);
-
+  const { totalPrice } = useBasket();
   useEffect(() => {
     if (!isDesktop) {
       dispatch({ type: actionTypes.sidebarStore.CLOSE_SIDEBAR });
@@ -33,7 +34,7 @@ const BasketButton = () => {
   return (
     <BasketWrapper onClick={toggleSidebar} isSidebarOpen={isOpen}>
       <Icon iconName="basket" size={24} />
-      <span>₺ 34</span>
+      <span>₺ {totalPrice}</span>
     </BasketWrapper>
   );
 };
@@ -44,9 +45,11 @@ interface StyleProps {
   isSidebarOpen: boolean;
 }
 const BasketWrapper = styled.button<StyleProps>`
+  display: flex;
+  width: 130px;
+  white-space: nowrap;
   background: ${(p) => p.theme.colors.darkMain};
   color: #fff;
-  display: flex;
   align-items: center;
   height: 100%;
   padding: 0 26px;
