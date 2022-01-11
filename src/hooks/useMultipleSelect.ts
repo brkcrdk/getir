@@ -20,6 +20,9 @@ const useFilter = (initialState: string[]) => {
     }
   }, [searchVal, initialState]);
 
+  // If selectedOpt is selected already remove it from selectedFilters
+  // If all selected remove all other options and set all selected
+  // else add selectedOpt to selectedFilters and remove all from selectedFilters
   const onSelect = (selectedOpt: string) => {
     const isSelected = selectedFilters.includes(selectedOpt);
     if (isSelected) {
@@ -36,6 +39,7 @@ const useFilter = (initialState: string[]) => {
     }
   };
 
+  // If nothing is selected, set all selected
   useEffect(() => {
     if (!selectedFilters.length) {
       setSelectedFilters(["All"]);
