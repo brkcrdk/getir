@@ -1,5 +1,5 @@
-# Api: [getir-locals-api.herokuapp.com](https://getir-locals-api.herokuapp.com)
-# Frontend URL: [getir-case-study-one.vercel.app](https://getir-case-study-one.vercel.app/)
+### [JSON server api](https://getir-locals-api.herokuapp.com)
+### [Frontend Url](https://getir-lj2sjswtj-brkcrdk.vercel.app/)
 
 ## Getir Studycase
 
