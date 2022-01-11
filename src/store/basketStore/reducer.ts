@@ -9,29 +9,34 @@ interface ActionType {
   payload: ProductType;
 }
 
+const isSelected = (state: BasketTypes, action: ActionType) => {
+  return state.basket.find(
+    (basketItem) => basketItem.item.slug === action.payload.slug
+  );
+};
+
 export const basketReducer = (
   state: BasketTypes = initialState,
   action: ActionType
 ) => {
   switch (action.type) {
     case actionTypes.basketStore.ADD_TO_BASKET:
-      const alreadyInBasket = state.basket.find(
-        (basketItem) => basketItem.item.slug === action.payload.slug
-      );
-
-      if (alreadyInBasket) {
-        const updateState = state.basket.map((basketItem) => {
-          if (basketItem.item.slug === action.payload.slug) {
-            return { ...basketItem, count: basketItem.count + 1 };
-          }
-          return basketItem;
-        });
-        return { ...state, basket: updateState };
+      if (!isSelected(state, action)) {
+        const newBasketItem = { count: 1, item: action.payload };
+        return {
+          basket: state.basket.concat(newBasketItem),
+        };
       }
-      return {
-        ...state,
-        basket: state.basket.concat({ count: 1, item: action.payload }),
-      };
+      return state;
+    case actionTypes.basketStore.REMOVE_FROM_BASKET:
+      if (isSelected(state, action)) {
+        const updatedState = state.basket.filter(
+          (basketItem) => basketItem.item.slug !== action.payload.slug
+        );
+        return { basket: updatedState };
+      }
+      return state;
+
     default:
       return state;
   }
