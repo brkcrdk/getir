@@ -5,6 +5,12 @@ import { ProductType, actionTypes, StoreTypes } from "types";
 const useBasket = () => {
   const dispatch = useDispatch();
   const { basket } = useSelector((s: StoreTypes) => s.basketStore);
+  const {
+    ADD_TO_BASKET,
+    REMOVE_FROM_BASKET,
+    INCREMENT_COUNT,
+    DECREMENT_COUNT,
+  } = actionTypes.basketStore;
 
   const isInBasket = (product: ProductType) => {
     return basket.some((basketItem) => basketItem.item.slug === product.slug);
@@ -12,13 +18,13 @@ const useBasket = () => {
 
   const addToBasket = (product: ProductType) => {
     dispatch({
-      type: actionTypes.basketStore.ADD_TO_BASKET,
+      type: ADD_TO_BASKET,
       payload: product,
     });
   };
   const removeFromBasket = (product: ProductType) => {
     dispatch({
-      type: actionTypes.basketStore.REMOVE_FROM_BASKET,
+      type: REMOVE_FROM_BASKET,
       payload: product,
     });
   };
@@ -28,11 +34,8 @@ const useBasket = () => {
     updateType: "increment" | "decrement"
   ) => {
     dispatch({
-      type: actionTypes.basketStore.REMOVE_FROM_BASKET,
-      payload: {
-        product,
-        updateType,
-      },
+      type: updateType === "increment" ? INCREMENT_COUNT : DECREMENT_COUNT,
+      payload: product,
     });
   };
 
