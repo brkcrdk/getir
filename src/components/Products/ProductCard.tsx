@@ -19,12 +19,17 @@ const ProductCard: FC<ProductCardProps> = ({
   return (
     <ProductCardWrapper>
       <ImageContainer>
-        <img src={imageUrl} alt="product-img" />
+        <img title={`${name}'s image`} src={imageUrl} alt="product-img" />
       </ImageContainer>
       <ProductInfo>
         <span>₺{price}</span>
         <h4 title={name}>{name}</h4>
-        <button onClick={onClick}>{inBasket ? "Remove" : "Add"}</button>
+        <button
+          title={inBasket ? "Remove item from cart" : "Add item to cart"}
+          onClick={onClick}
+        >
+          {inBasket ? "Remove" : "Add"}
+        </button>
       </ProductInfo>
     </ProductCardWrapper>
   );
