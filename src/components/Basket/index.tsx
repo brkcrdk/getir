@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styled from "styled-components";
 import { device } from "theme";
+import { useBasket } from "hooks";
 import BasketItem from "./BasketItem";
 
 interface BasketProps {
@@ -8,13 +9,33 @@ interface BasketProps {
 }
 
 const Basket: FC<BasketProps> = ({ sidebarBasket = false }) => {
+  const { basket, updateCount, totalPrice } = useBasket();
   return (
     <BasketWrapper sidebarBasket={sidebarBasket}>
       <ContentWrapper>
-        <BasketItem />
-        <BasketItem />
-        <BasketItem />
-        <Total>₺39.97</Total>
+        {basket.length ? (
+          <>
+            <ItemContainer>
+              {basket.map((basketItem) => (
+                <BasketItem
+                  key={basketItem.item.added}
+                  price={basketItem.item.price}
+                  productName={basketItem.item.name}
+                  count={basketItem.count}
+                  incrementAmount={() =>
+                    updateCount(basketItem.item, "increment")
+                  }
+                  decrementAmount={() =>
+                    updateCount(basketItem.item, "decrement")
+                  }
+                />
+              ))}
+            </ItemContainer>
+            <Total>₺{totalPrice}</Total>
+          </>
+        ) : (
+          <span className="empty-basket-text">Your basket is empty.</span>
+        )}
       </ContentWrapper>
     </BasketWrapper>
   );
@@ -33,10 +54,15 @@ const BasketWrapper = styled.div<StyleProps>`
   padding: 8px;
   height: 100%;
   background: ${(p) => p.theme.colors.main};
+
   @media ${device.desktop} {
     display: ${(p) => !p.sidebarBasket && "none"};
     background: #fff;
     max-width: initial;
+  }
+  @media ${device.phone} {
+    top: 0;
+    position: relative;
   }
 `;
 
@@ -46,6 +72,17 @@ const ContentWrapper = styled.div`
   padding: 16px;
   display: flex;
   flex-direction: column;
+  .empty-basket-text {
+    text-align: center;
+  }
+`;
+
+const ItemContainer = styled.div`
+  max-height: 500px;
+  overflow: auto;
+  @media ${device.phone} {
+    max-height: 100%;
+  }
 `;
 
 const Total = styled.button`
