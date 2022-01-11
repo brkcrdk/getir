@@ -6,7 +6,8 @@ const initialState = {
   filters: {
     _limit: 16,
     _page: 1,
-    _sort: "price_asc",
+    _sort: "price",
+    _order: "asc",
     itemType: "mug",
   },
 };

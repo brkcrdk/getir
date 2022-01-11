@@ -5,6 +5,7 @@ type filters =
   | "_page"
   | "_limit"
   | "_sort"
+  | "_order"
   | "manufacturer_like"
   | "tags_like"
   | "itemType";
@@ -22,6 +23,9 @@ const useChangeFilter = () => {
       payload: {
         filters: {
           ...filters,
+          // Bu yapı yerine obje şeklinde gelmeli
+          // {...newFilters} gibi böylece order tarafındaki hata gider
+          // ayrıca daha mantıklı bir yapı oluşur.
           [filterType]: filterData,
         },
       },

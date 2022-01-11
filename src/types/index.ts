@@ -19,6 +19,7 @@ export interface FilterTypes {
   _page: number;
   _limit: number;
   _sort?: string | null;
+  _order?: string | null;
   manufacturer_like?: string[] | null;
   tags_like?: string[] | null;
 }
