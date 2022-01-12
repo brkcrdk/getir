@@ -1,37 +1,37 @@
-
 ## Getir Studycase
- 
- - [JSON server api](https://getir-locals-api.herokuapp.com)
- - [Frontend Url](https://getir-lj2sjswtj-brkcrdk.vercel.app/)
+
+- [JSON server api](https://getir-locals-api.herokuapp.com)
+- [Frontend Url](https://getir-seven.vercel.app/)
 
 This is a study case for getir. Main goals of this app:
- - List given products
- - Serve them from json server(https://getir-locals-api.herokuapp.com)
- - Filter products. This options are multiselect:
-   - by tag names
-   - by manufacturer name
- - Sort produtcs. This options are singleselect:
-   -  price low to high,
-   -  price high to low,
-   -  new to old
-   -  old to new
-   -  itemType
- - Paginate products
- - Add products to basket and remove products from basket
- - Increase and decrease amount of item inside of basket
+
+- List given products
+- Serve them from json server(https://getir-locals-api.herokuapp.com)
+- Filter products. This options are multiselect:
+  - by tag names
+  - by manufacturer name
+- Sort produtcs. This options are singleselect:
+  - price low to high,
+  - price high to low,
+  - new to old
+  - old to new
+  - itemType
+- Paginate products
+- Add products to basket and remove products from basket
+- Increase and decrease amount of item inside of basket
 
 In this project this technologies and packages used:
- - React
- - Typescript
- - Redux
- - Redux-saga
- - styled-components
- - usehooks-ts
- - framer-motion
- - react-contente-loader
- - react-paginate
- - icomoon
 
+- React
+- Typescript
+- Redux
+- Redux-saga
+- styled-components
+- usehooks-ts
+- framer-motion
+- react-contente-loader
+- react-paginate
+- icomoon
 
 ## Folder Structure
 
@@ -48,12 +48,10 @@ In this project this technologies and packages used:
   - index.tsx
   - theme.ts
 
+### Note:
 
- ### Note: 
- `Absolute import` was used inside the `src` folder in this project. So `you can import inside the src folder` like this:
+`Absolute import` was used inside the `src` folder in this project. So `you can import inside the src folder` like this:
 
 ```js
- import { Container } from 'components';
+import { Container } from "components";
 ```
-
-
