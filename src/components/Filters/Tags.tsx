@@ -25,7 +25,7 @@ const Brands = () => {
 
   useEffect(() => {
     const filterAll = selectedFilters.filter((tag) => tag !== "All");
-    handleChangeFilter("tags_like", filterAll);
+    handleChangeFilter({ tags_like: filterAll });
   }, [selectedFilters]);
 
   const renderResults = searchResults.length ? (

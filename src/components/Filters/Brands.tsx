@@ -26,7 +26,7 @@ const Brands = () => {
 
   useEffect(() => {
     const filterAll = selectedFilters.filter((brand) => brand !== "All");
-    handleChangeFilter("manufacturer_like", filterAll);
+    handleChangeFilter({ manufacturer_like: filterAll });
   }, [selectedFilters]);
 
   const renderResults = searchResults.length ? (

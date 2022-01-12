@@ -19,7 +19,7 @@ const Products = () => {
         <Pagination
           pageCount={totalPages}
           onPageChange={(e: { selected: number }) => {
-            handleChangeFilter("_page", e.selected + 1);
+            handleChangeFilter({ _page: e.selected + 1 });
           }}
         />
       )}

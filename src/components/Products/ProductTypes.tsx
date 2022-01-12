@@ -18,7 +18,7 @@ const ProductTypes = () => {
   }, []);
 
   const handleChangeType = (type: string) => {
-    handleChangeFilter("itemType", type);
+    handleChangeFilter({ itemType: type });
     setSelectedType(type);
   };
 
