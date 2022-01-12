@@ -46,13 +46,13 @@ interface StyleProps {
 }
 const BasketWrapper = styled.button<StyleProps>`
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 130px;
-  white-space: nowrap;
+  height: 100%;
   background: ${(p) => p.theme.colors.darkMain};
   color: #fff;
-  align-items: center;
-  height: 100%;
-  padding: 0 26px;
+  white-space: nowrap;
   pointer-events: none;
   span {
     margin-left: 8px;
